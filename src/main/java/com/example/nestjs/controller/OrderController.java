@@ -4,11 +4,14 @@ import com.example.nestjs.dto.CreateOrderBody;
 import com.example.nestjs.entity.ProductOrderEntity;
 import com.example.nestjs.entity.ResponseEntity;
 import com.example.nestjs.service.OrderService;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Objects;
 
 @RestController
@@ -22,7 +25,23 @@ public class OrderController {
     }
 
     @PostMapping("/order-create")
-    public ResponseEntity<ProductOrderEntity> createOrder (@RequestBody CreateOrderBody body) {
+    public ResponseEntity<ProductOrderEntity> createOrder (@Valid @RequestBody CreateOrderBody body, BindingResult br) {
+        if (body.getQuantity() == 0) {
+            return new ResponseEntity<>(
+                    1,
+                    "购买量不能为0",
+                    null
+            );
+        }
+
+        if (br.hasErrors()) {
+            return new ResponseEntity<>(
+                    1,
+                    Objects.requireNonNull(br.getFieldError()).getDefaultMessage(),
+                    null
+            );
+        }
+
         String productId = body.getProductId();
         String userId = body.getUserId();
         Integer quantity = body.getQuantity();

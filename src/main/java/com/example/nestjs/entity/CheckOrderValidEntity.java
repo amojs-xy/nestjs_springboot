@@ -1,5 +1,10 @@
 package com.example.nestjs.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class CheckOrderValidEntity {
     private ProductEntity product;
     private Integer quantity;
@@ -12,19 +17,4 @@ public class CheckOrderValidEntity {
         this.quantity = quantity;
     }
 
-    public ProductEntity getProduct() {
-        return product;
-    }
-
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
 }

@@ -1,8 +1,12 @@
 package com.example.nestjs.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class ProductOrderEntity {
+
     private String id;
     private String productId;
     private String userId;
@@ -19,58 +23,6 @@ public class ProductOrderEntity {
         this.userId = userId;
         this.productName = productName;
         this.quantity = quantity;
-        this.dateTime = dateTime;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @JsonFormat(pattern = "product_id")
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    @JsonFormat(pattern = "user_id")
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    @JsonFormat(pattern = "product_name")
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    @JsonFormat(pattern = "date_time")
-    public long getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(long dateTime) {
         this.dateTime = dateTime;
     }
 }
