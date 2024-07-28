@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @RestController
 @RequestMapping("/product-order")
 public class OrderController {
@@ -39,7 +41,7 @@ public class OrderController {
                     );
         }
 
-        if (poe.getQuantity() == 0) {
+        if (Objects.equals(poe.getId(), "")) {
             return new ResponseEntity<>(
                     2,
                     "该产品库存不足购买量",
