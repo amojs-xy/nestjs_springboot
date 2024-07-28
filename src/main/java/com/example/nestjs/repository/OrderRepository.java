@@ -62,13 +62,14 @@ public class OrderRepository {
         try {
             List<ProductOrderEntity> productOrderList = objectMapper.readValue(
                     new File("G:/workspace/java/nestjs/src/main/java/com/example/nestjs/data/product-order.json"),
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, ProductEntity.class)
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, ProductOrderEntity.class)
             );
 
             productOrderList.add(productOrder);
 
+            objectMapper.writeValue(new File("G:/workspace/java/nestjs/src/main/java/com/example/nestjs/data/product-order.json"), productOrderList);
+
             try {
-                objectMapper.writeValue(new File("G:/workspace/java/nestjs/src/main/java/com/example/nestjs/data/product-order.json"), productOrderList);
 
                 List<ProductEntity> productList = objectMapper.readValue(
                         new File("G:/workspace/java/nestjs/src/main/java/com/example/nestjs/data/product.json"),

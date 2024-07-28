@@ -4,17 +4,15 @@ public class ProductEntity {
     private String id;
     private String name;
     private String unit;
-    private Integer quantity;
     private Integer remaining;
 
     public ProductEntity() {
     }
 
-    public ProductEntity(String id, String name, String unit, Integer quantity, Integer remaining) {
+    public ProductEntity(String id, String name, String unit, Integer remaining) {
         this.id = id;
         this.name = name;
         this.unit = unit;
-        this.quantity = quantity;
         this.remaining = remaining;
     }
 
@@ -40,14 +38,6 @@ public class ProductEntity {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public Integer getRemaining() {
